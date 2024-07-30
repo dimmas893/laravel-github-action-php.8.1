@@ -86,5 +86,5 @@ jobs:
       run: |
         echo "$SSH_PRIVATE_KEY" > private_key
         chmod 600 private_key
-        rsync -avz -e "ssh -i private_key -o StrictHostKeyChecking=no" ./ ${SSH_USERNAME}@${SSH_HOST}:/path/to/your/laravel/app
-        ssh -i private_key -o StrictHostKeyChecking=no ${SSH_USERNAME}@${SSH_HOST} "cd /path/to/your/laravel/app && php artisan migrate --force"
+        rsync -avz -e "ssh -i private_key -o StrictHostKeyChecking=no" ./ ${SSH_USERNAME}@${SSH_HOST}:/var/www/laravel/cicd/testing-php8-1
+        ssh -i private_key -o StrictHostKeyChecking=no ${SSH_USERNAME}@${SSH_HOST} "cd /var/www/laravel/cicd/testing-php8-1 && php artisan migrate --force"
